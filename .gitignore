@@ -1,0 +1,17 @@
+# Entorno / Configuraciones locales
+.env
+config.local.php
+
+# IDEs y Editores de codigo
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# Logs y Temporales
+logs/
+*.log
+tmp/
