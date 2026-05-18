@@ -81,6 +81,39 @@ $container->singleton(\App\Services\EvaluacionService::class, function ($c) {
     );
 });
 
+// Registrar los Controladores del módulo en el Contenedor (autowiring)
+$container->singleton(\App\Controllers\EvaluacionController::class, function ($c) {
+    return new \App\Controllers\EvaluacionController(
+        $c->get(\App\Services\EvaluacionService::class),
+        $c->get(\App\Repositories\Contracts\EmpleadoRepositoryInterface::class),
+        $c->get(\App\Repositories\Contracts\PeriodoRepositoryInterface::class),
+        $c->get(\App\Repositories\Contracts\PerfilObjetivoRepositoryInterface::class),
+        $c->get(\App\Repositories\Contracts\EvaluacionRepositoryInterface::class)
+    );
+});
+
+$container->singleton(\App\Controllers\MatrizController::class, function ($c) {
+    return new \App\Controllers\MatrizController(
+        $c->get(\App\Services\EvaluacionService::class),
+        $c->get(\App\Repositories\Contracts\PeriodoRepositoryInterface::class),
+        $c->get(\App\Repositories\Contracts\EmpleadoRepositoryInterface::class)
+    );
+});
+
+$container->singleton(\App\Controllers\FichaController::class, function ($c) {
+    return new \App\Controllers\FichaController(
+        $c->get(\App\Services\EvaluacionService::class),
+        $c->get(\App\Repositories\Contracts\EmpleadoRepositoryInterface::class)
+    );
+});
+
+$container->singleton(\App\Controllers\CatalogoController::class, function ($c) {
+    return new \App\Controllers\CatalogoController(
+        $c->get(\App\Repositories\Contracts\CompetenciaRepositoryInterface::class),
+        $c->get(\App\Repositories\Contracts\PeriodoRepositoryInterface::class)
+    );
+});
+
 // Registrar la instancia única del Router y la conexión de BD en el contenedor
 $container->singleton(Router::class, function () {
     return new Router();
@@ -143,21 +176,27 @@ $router->get('/matriz', function () {
 });
 
 // --- Rutas de API / AJAX (Controllers del módulo) ---
-// Mapeamos temporalmente con Closures de prueba para validar que el Router y Container responden JSON perfectamente.
-// En las siguientes actividades del Bloque 3, estas llamadas se redireccionarán a sus respectivos Controllers.
 
-$router->post('/api/evaluacion', function () {
-    header('Content-Type: application/json; charset=utf-8');
-    echo json_encode([
-        'status' => 'success',
-        'message' => 'Simulación de guardado con Fetch API exitosa, parce.',
-        'data' => [
-            'porcentaje_ajuste' => 87.5,
-            'evaluaciones' => []
-        ]
-    ], JSON_UNESCAPED_UNICODE);
-});
+// 1. Endpoints de Evaluación One-to-One
+$router->get('/api/evaluacion/formulario', [\App\Controllers\EvaluacionController::class, 'obtenerFormulario']);
+$router->post('/api/evaluacion', [\App\Controllers\EvaluacionController::class, 'store']);
 
+// 2. Endpoints de la Matriz Resumen de Equipo
+$router->get('/api/matriz', [\App\Controllers\MatrizController::class, 'obtenerMatriz']);
+$router->get('/api/matriz/filtros', [\App\Controllers\MatrizController::class, 'obtenerFiltros']);
+
+// 3. Endpoints de Ficha de Seguimiento Individual
+$router->get('/api/ficha', [\App\Controllers\FichaController::class, 'obtenerFicha']);
+$router->get('/api/empleados', [\App\Controllers\FichaController::class, 'obtenerEmpleados']);
+
+// 4. Endpoints de CRUD Parametrizable (Catálogos y Competencias)
+$router->get('/api/catalogo/competencias', [\App\Controllers\CatalogoController::class, 'obtenerCompetencias']);
+$router->post('/api/catalogo/competencia', [\App\Controllers\CatalogoController::class, 'guardarCompetencia']);
+$router->post('/api/catalogo/competencia/eliminar', [\App\Controllers\CatalogoController::class, 'eliminarCompetencia']);
+$router->get('/api/catalogo/periodos', [\App\Controllers\CatalogoController::class, 'obtenerPeriodosYEscalas']);
+$router->post('/api/catalogo/periodo', [\App\Controllers\CatalogoController::class, 'guardarPeriodo']);
+
+// 5. Utilidad de diagnóstico de Base de Datos
 $router->get('/api/test-db', function () {
     header('Content-Type: application/json; charset=utf-8');
     try {

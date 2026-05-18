@@ -83,7 +83,7 @@ class Router
         }
 
         // Si es un closure directo, se ejecuta
-        if (is_callable($handler)) {
+        if ($handler instanceof \Closure || (is_string($handler) && is_callable($handler))) {
             try {
                 $handler();
             } catch (\Throwable $e) {
@@ -147,9 +147,15 @@ class Router
     private function isAjaxRequest(): bool
     {
         // 1. Cabecera estándar de peticiones asíncronas
-        $headers = getallheaders();
-        $requestedWith = $headers['X-Requested-With'] ?? $headers['x-requested-with'] ?? '';
-        if (strtolower($requestedWith) === 'xmlhttprequest') {
+        $requestedWith = '';
+        if (function_exists('getallheaders')) {
+            $headers = getallheaders();
+            $requestedWith = $headers['X-Requested-With'] ?? $headers['x-requested-with'] ?? '';
+        } else {
+            $requestedWith = $_SERVER['HTTP_X_REQUESTED_WITH'] ?? $_SERVER['HTTP_x_requested_with'] ?? '';
+        }
+
+        if (strtolower((string) $requestedWith) === 'xmlhttprequest') {
             return true;
         }
 

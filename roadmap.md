@@ -63,7 +63,7 @@
 
 ---
 
-## 🟨 Bloque 3: Backend e Infraestructura Core (PHP Nativo POO) [EN PROGRESO]
+## ✅ Bloque 3: Backend e Infraestructura Core (PHP Nativo POO) [COMPLETADO]
 
 - [x] **Actividad 3.0:** Configuración del entorno de conexión:
   - `config/database.php` — constantes de conexión para el contenedor Docker de MySQL ✅
@@ -94,11 +94,11 @@
   - `PerfilObjetivoService` — gestión del perfil ideal por puesto/periodo ✅
   - Regla: los Services reciben arrays o DTOs simples. Nunca objetos HTTP. ✅
 
-- [ ] **Actividad 3.4:** Creación de los `src/Controllers/` para endpoints que retornen JSON estructurado:
-  - `EvaluacionController` — POST guardar evaluación → retorna `{ porcentaje_ajuste, evaluaciones[] }`
-  - `FichaController` — GET ficha individual del empleado con histórico completo
-  - `MatrizController` — GET matriz resumen del equipo (con filtros por periodo/departamento)
-  - `CatalogoController` — CRUD competencias, escalas, periodos, bloques
+- [x] **Actividad 3.4:** Creación de los `src/Controllers/` para endpoints que retornen JSON estructurado:
+  - `EvaluacionController` — POST guardar evaluación → retorna `{ porcentaje_ajuste, evaluaciones[] }` ✅
+  - `FichaController` — GET ficha individual del empleado con histórico completo ✅
+  - `MatrizController` — GET matriz resumen del equipo (con filtros por periodo/departamento) ✅
+  - `CatalogoController` — CRUD competencias, escalas, periodos, bloques ✅
 
 ---
 
@@ -174,7 +174,7 @@ Bloque 1 → Bloque 2 → Bloque 3 → Bloque 4 → Bloque 5
 |---|---|---|---|
 | 1 — Config y Entorno | 3 | 3 | 100% ✅ |
 | 2 — Base de Datos | 3 | 3 | 100% ✅ |
-| 3 — Backend PHP | 6 | 5 | 83% 🟨 |
+| 3 — Backend PHP | 6 | 6 | 100% ✅ |
 | 4 — Frontend | 5 | 0 | 0% |
 | 5 — Entregables | 2 | 0 | 0% |
-| **Total** | **19** | **11** | **58%** |
+| **Total** | **19** | **12** | **63%** |
