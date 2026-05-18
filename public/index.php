@@ -40,6 +40,47 @@ use App\Core\Router;
 
 $container = new Container();
 
+// Registrar la conexión PDO directamente para resolver dependencias de Repositories
+$container->singleton(\PDO::class, function () {
+    return \App\Core\Database::getInstance()->getConnection();
+});
+
+// Registrar bindings de las interfaces a sus implementaciones concretas
+$container->singleton(\App\Repositories\Contracts\CompetenciaRepositoryInterface::class, function ($c) {
+    return new \App\Repositories\PDOCompetenciaRepository($c->get(\PDO::class));
+});
+
+$container->singleton(\App\Repositories\Contracts\EmpleadoRepositoryInterface::class, function ($c) {
+    return new \App\Repositories\PDOEmpleadoRepository($c->get(\PDO::class));
+});
+
+$container->singleton(\App\Repositories\Contracts\PeriodoRepositoryInterface::class, function ($c) {
+    return new \App\Repositories\PDOPeriodoRepository($c->get(\PDO::class));
+});
+
+$container->singleton(\App\Repositories\Contracts\PerfilObjetivoRepositoryInterface::class, function ($c) {
+    return new \App\Repositories\PDOPerfilObjetivoRepository($c->get(\PDO::class));
+});
+
+$container->singleton(\App\Repositories\Contracts\EvaluacionRepositoryInterface::class, function ($c) {
+    return new \App\Repositories\PDOEvaluacionRepository($c->get(\PDO::class));
+});
+
+// Registrar la calculadora matemática y el servicio orquestador de Evaluaciones
+$container->singleton(\App\Services\CompetenciaCalculadoraServicio::class, function ($c) {
+    return new \App\Services\CompetenciaCalculadoraServicio();
+});
+
+$container->singleton(\App\Services\EvaluacionService::class, function ($c) {
+    return new \App\Services\EvaluacionService(
+        $c->get(\App\Repositories\Contracts\EvaluacionRepositoryInterface::class),
+        $c->get(\App\Repositories\Contracts\PerfilObjetivoRepositoryInterface::class),
+        $c->get(\App\Repositories\Contracts\PeriodoRepositoryInterface::class),
+        $c->get(\App\Repositories\Contracts\EmpleadoRepositoryInterface::class),
+        $c->get(\App\Services\CompetenciaCalculadoraServicio::class)
+    );
+});
+
 // Registrar la instancia única del Router y la conexión de BD en el contenedor
 $container->singleton(Router::class, function () {
     return new Router();

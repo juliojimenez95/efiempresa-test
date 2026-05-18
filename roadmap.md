@@ -82,17 +82,17 @@
   - Soporte de rutas AJAX diferenciadas y respuestas JSON estructuradas ✅
   - Respuesta `404` asíncrona (JSON) y síncrona (HTML Bootstrap) integrada ✅
 
-- [ ] **Actividad 3.2:** Creación de la capa `src/Repositories/`:
-  - Interfaces en `src/Repositories/Contracts/` (`EvaluacionRepositoryInterface`, etc.)
-  - Implementaciones concretas con PDO Prepared Statements
-  - Sin lógica de negocio. Sólo queries + mapeo a arrays asociativos
-  - Repositories requeridos: `EvaluacionRepository`, `CompetenciaRepository`, `PeriodoRepository`, `PerfilObjetivoRepository`, `EmpleadoRepository`
+- [x] **Actividad 3.2:** Creación de la capa `src/Repositories/`:
+  - Interfaces en `src/Repositories/Contracts/` (`EvaluacionRepositoryInterface`, etc.) ✅
+  - Implementaciones concretas con PDO Prepared Statements ✅
+  - Sin lógica de negocio. Sólo queries + mapeo a arrays asociativos ✅
+  - Repositories requeridos: `EvaluacionRepository`, `CompetenciaRepository`, `PeriodoRepository`, `PerfilObjetivoRepository`, `EmpleadoRepository` ✅
 
-- [ ] **Actividad 3.3:** Creación de la capa `src/Services/`:
-  - `EvaluacionService` — orquesta el guardado, calcula gap y % ajuste global ponderado
-  - `SemaforoService` — aplica el patrón Strategy con `SemaforoStrategyInterface`
-  - `PerfilObjetivoService` — gestión del perfil ideal por puesto/periodo
-  - Regla: los Services reciben arrays o DTOs simples. Nunca objetos HTTP.
+- [x] **Actividad 3.3:** Creación de la capa `src/Services/`:
+  - `EvaluacionService` — orquesta el guardado, calcula gap y % ajuste global ponderado ✅
+  - `SemaforoService` — aplica el patrón Strategy con `SemaforoStrategyInterface` ✅
+  - `PerfilObjetivoService` — gestión del perfil ideal por puesto/periodo ✅
+  - Regla: los Services reciben arrays o DTOs simples. Nunca objetos HTTP. ✅
 
 - [ ] **Actividad 3.4:** Creación de los `src/Controllers/` para endpoints que retornen JSON estructurado:
   - `EvaluacionController` — POST guardar evaluación → retorna `{ porcentaje_ajuste, evaluaciones[] }`
@@ -174,7 +174,7 @@ Bloque 1 → Bloque 2 → Bloque 3 → Bloque 4 → Bloque 5
 |---|---|---|---|
 | 1 — Config y Entorno | 3 | 3 | 100% ✅ |
 | 2 — Base de Datos | 3 | 3 | 100% ✅ |
-| 3 — Backend PHP | 5 | 3 | 60% 🟨 |
+| 3 — Backend PHP | 6 | 5 | 83% 🟨 |
 | 4 — Frontend | 5 | 0 | 0% |
 | 5 — Entregables | 2 | 0 | 0% |
-| **Total** | **18** | **9** | **50%** |
+| **Total** | **19** | **11** | **58%** |
