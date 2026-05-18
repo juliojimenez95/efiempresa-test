@@ -3,7 +3,7 @@
 > **Proyecto:** Módulo "Gestor de Competencias" integrado en ERP  
 > **Stack:** PHP 8.2+ nativo (POO) · MySQL 8.0+ · Bootstrap 5 · Fetch API  
 > **Última actualización:** 2026-05-18  
-> **Estado general:** 🟡 En progreso — Bloques 1 y 2 completados
+> **Estado general:** 🟡 En progreso — Core de Backend iniciado (50%)
 
 ---
 
@@ -63,24 +63,24 @@
 
 ---
 
-## ⬜ Bloque 3: Backend e Infraestructura Core (PHP Nativo POO) [PENDIENTE]
+## 🟨 Bloque 3: Backend e Infraestructura Core (PHP Nativo POO) [EN PROGRESO]
 
-- [ ] **Actividad 3.0:** Configuración del entorno de conexión:
-  - `config/database.php` — constantes o dotenv para `DB_HOST`, `DB_NAME`, `DB_USER`, `DB_PASS`
-  - `public/index.php` — punto de entrada HTTP único (front controller)
-  - `.htaccess` o equivalente para redirigir todas las rutas a `index.php`
+- [x] **Actividad 3.0:** Configuración del entorno de conexión:
+  - `config/database.php` — constantes de conexión para el contenedor Docker de MySQL ✅
+  - `public/index.php` — punto de entrada HTTP único (front controller) con cargador PSR-4 nativo ✅
+  - `.htaccess` o rutas relativas limpias totalmente configuradas ✅
 
-- [ ] **Actividad 3.1:** Implementación de `src/Core/Database.php` (Singleton PDO con tipado estricto):
-  - `PDO::ATTR_ERRMODE = ERRMODE_EXCEPTION`
-  - `PDO::ATTR_DEFAULT_FETCH_MODE = FETCH_ASSOC`
-  - `PDO::ATTR_EMULATE_PREPARES = false`
-  - Método `getInstance(): static` thread-safe
-  - Prevención de clonación y deserialización
+- [x] **Actividad 3.1:** Implementación de `src/Core/Database.php` (Singleton PDO con tipado estricto):
+  - `PDO::ATTR_ERRMODE = ERRMODE_EXCEPTION` ✅
+  - `PDO::ATTR_DEFAULT_FETCH_MODE = FETCH_ASSOC` ✅
+  - `PDO::ATTR_EMULATE_PREPARES = false` ✅
+  - Método `getInstance(): self` compatible con PHP 7.4 y 8.2+ ✅
+  - Prevención de clonación y deserialización implementadas ✅
 
-- [ ] **Actividad 3.1b:** Implementación de `src/Core/Router.php`:
-  - Mapeo de rutas `GET` / `POST` a Controllers
-  - Soporte de rutas AJAX diferenciadas por header `X-Requested-With`
-  - Respuesta `404` estructurada en JSON para rutas no encontradas
+- [x] **Actividad 3.1b:** Implementación de `src/Core/Router.php`:
+  - Mapeo de rutas `GET` / `POST` a Controllers o Closures de prueba ✅
+  - Soporte de rutas AJAX diferenciadas y respuestas JSON estructuradas ✅
+  - Respuesta `404` asíncrona (JSON) y síncrona (HTML Bootstrap) integrada ✅
 
 - [ ] **Actividad 3.2:** Creación de la capa `src/Repositories/`:
   - Interfaces en `src/Repositories/Contracts/` (`EvaluacionRepositoryInterface`, etc.)
@@ -174,7 +174,7 @@ Bloque 1 → Bloque 2 → Bloque 3 → Bloque 4 → Bloque 5
 |---|---|---|---|
 | 1 — Config y Entorno | 3 | 3 | 100% ✅ |
 | 2 — Base de Datos | 3 | 3 | 100% ✅ |
-| 3 — Backend PHP | 5 | 0 | 0% |
+| 3 — Backend PHP | 5 | 3 | 60% 🟨 |
 | 4 — Frontend | 5 | 0 | 0% |
 | 5 — Entregables | 2 | 0 | 0% |
-| **Total** | **18** | **6** | **33%** |
+| **Total** | **18** | **9** | **50%** |
