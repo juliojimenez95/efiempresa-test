@@ -97,12 +97,28 @@ body {
     transform: translateY(-1px);
 }
 
-/* Estados activos del selector */
-.capsula-btn.active {
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
+/* Estados activos del selector (Colorizados semánticamente según rango) */
+.capsula-btn.active[data-value="1"],
+.capsula-btn.active[data-value="2"] {
+    background-color: #ef4444; /* Rojo - Bajo */
+    border-color: #ef4444;
     color: #ffffff;
-    box-shadow: 0 4px 10px rgba(79, 70, 229, 0.3);
+    box-shadow: 0 4px 10px rgba(239, 68, 68, 0.35);
+}
+
+.capsula-btn.active[data-value="3"] {
+    background-color: #f59e0b; /* Amarillo/Ámbar - Medio */
+    border-color: #f59e0b;
+    color: #ffffff;
+    box-shadow: 0 4px 10px rgba(245, 158, 11, 0.35);
+}
+
+.capsula-btn.active[data-value="4"],
+.capsula-btn.active[data-value="5"] {
+    background-color: #10b981; /* Verde - Alto */
+    border-color: #10b981;
+    color: #ffffff;
+    box-shadow: 0 4px 10px rgba(16, 185, 129, 0.35);
 }
 
 /* Estilos de Semáforo Ovalados */
