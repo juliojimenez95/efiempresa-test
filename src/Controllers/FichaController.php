@@ -39,6 +39,7 @@ class FichaController
 
         try {
             $empleadoId = isset($requestData['empleado_id']) ? (int) $requestData['empleado_id'] : 0;
+            $periodoId  = isset($requestData['periodo_id']) ? (int) $requestData['periodo_id'] : 0;
 
             if ($empleadoId <= 0) {
                 http_response_code(400);
@@ -52,11 +53,17 @@ class FichaController
             // Invocar servicio orquestador
             $ficha = $this->evaluacionService->obtenerFichaIndividual($empleadoId);
 
+            $detalle = null;
+            if ($periodoId > 0) {
+                $detalle = $this->evaluacionService->obtenerDetalleEvaluacion($empleadoId, $periodoId);
+            }
+
             http_response_code(200);
             echo json_encode([
                 'status'    => 'success',
                 'empleado'  => $ficha['empleado'],
-                'historial' => $ficha['historial']
+                'historial' => $ficha['historial'],
+                'detalle'   => $detalle
             ], JSON_UNESCAPED_UNICODE);
 
         } catch (Throwable $e) {

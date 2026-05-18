@@ -163,4 +163,25 @@ class EvaluacionService
             'matriz'  => $matriz
         ];
     }
+
+    /**
+     * Recupera el detalle de evaluación y cabecera de un periodo específico para un empleado.
+     *
+     * @param int $empleadoId
+     * @param int $periodoId
+     * @return array|null
+     */
+    public function obtenerDetalleEvaluacion(int $empleadoId, int $periodoId): ?array
+    {
+        $cabecera = $this->evaluacionRepo->findCabecera($empleadoId, $periodoId);
+        if (!$cabecera) {
+            return null;
+        }
+
+        $detalles = $this->evaluacionRepo->findDetalle((int) $cabecera['id']);
+        return [
+            'cabecera' => $cabecera,
+            'detalles' => $detalles
+        ];
+    }
 }

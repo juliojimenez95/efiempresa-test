@@ -111,11 +111,11 @@
   - IDs semánticos: `semaforo-{id}`, `gap-{id}`, `badge-ajuste-global` ✅
   - Notificaciones Bootstrap en `#notificaciones` (no `alert()` nativo) ✅
 
-- [ ] **Actividad 4.2:** Ficha Individual de Competencias (`public/views/ficha.php`):
-  - Renderizado de histórico de evaluaciones por periodo
-  - Gráfica o tabla de comparación Ideal vs Actual por competencia
-  - Columnas: Competencia · Peso · Valor Ideal · Valor Real · GAP · Semáforo · % Ajuste
-  - Filtro por periodo (dropdown dinámico)
+- [x] **Actividad 4.2:** Ficha Individual de Competencias (`public/views/ficha.php`):
+  - Renderizado de histórico de evaluaciones por periodo ✅
+  - Gráfica o tabla de comparación Ideal vs Actual por competencia ✅
+  - Columnas: Competencia · Peso · Valor Ideal · Valor Real · GAP · Semáforo · % Ajuste ✅
+  - Filtro por periodo (dropdown dinámico) ✅
 
 - [ ] **Actividad 4.3:** Matriz Resumen por Equipo (`public/views/matriz.php`):
   - Tabla cruzada: filas = empleados, columnas = competencias
@@ -175,6 +175,6 @@ Bloque 1 → Bloque 2 → Bloque 3 → Bloque 4 → Bloque 5
 | 1 — Config y Entorno | 3 | 3 | 100% ✅ |
 | 2 — Base de Datos | 3 | 3 | 100% ✅ |
 | 3 — Backend PHP | 6 | 6 | 100% ✅ |
-| 4 — Frontend | 5 | 1 | 20% 🟨 |
+| 4 — Frontend | 5 | 2 | 40% 🟨 |
 | 5 — Entregables | 2 | 0 | 0% |
-| **Total** | **19** | **13** | **68%** |
+| **Total** | **19** | **14** | **73%** |
