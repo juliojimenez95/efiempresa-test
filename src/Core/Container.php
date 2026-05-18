@@ -10,11 +10,35 @@ namespace App\Core;
  */
 class Container
 {
+    /** @var Container|null Instancia única del contenedor (Singleton) */
+    private static ?Container $instance = null;
+
     /** @var array<string, callable> */
     private array $bindings = [];
 
     /** @var array<string, mixed> */
     private array $instances = [];
+
+    /**
+     * Constructor del Contenedor. Asigna la instancia global singleton si es el primero en crearse.
+     */
+    public function __construct()
+    {
+        if (self::$instance === null) {
+            self::$instance = $this;
+        }
+    }
+
+    /**
+     * Obtiene la instancia activa del contenedor o crea una si no existe.
+     */
+    public static function getInstance(): Container
+    {
+        if (self::$instance === null) {
+            self::$instance = new self();
+        }
+        return self::$instance;
+    }
 
     /**
      * Registra una resolución para una interfaz o clase.
