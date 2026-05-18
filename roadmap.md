@@ -102,14 +102,14 @@
 
 ---
 
-## ⬜ Bloque 4: Frontend Dinámico e Interfaz de Usuario (JS / Bootstrap) [PENDIENTE]
+## 🟨 Bloque 4: Frontend Dinámico e Interfaz de Usuario (JS / Bootstrap) [EN PROGRESO]
 
-- [ ] **Actividad 4.1:** Interfaz de Evaluación Operativa "One-to-One" (`public/views/evaluacion.php`):
-  - Formulario con puntuación, comentario y semáforo por competencia
-  - `min`/`max` del input inyectados desde el servidor (escala del periodo activo)
-  - Fetch API: POST al guardar → refresca semáforos y `badge-ajuste-global` sin recargar
-  - IDs semánticos: `semaforo-{id}`, `gap-{id}`, `badge-ajuste-global`
-  - Notificaciones Bootstrap en `#notificaciones` (no `alert()` nativo)
+- [x] **Actividad 4.1:** Interfaz de Evaluación Operativa "One-to-One" (`public/views/evaluacion.php`):
+  - Formulario con puntuación, comentario y semáforo por competencia ✅
+  - `min`/`max` del input inyectados desde el servidor (escala del periodo activo) ✅
+  - Fetch API: POST al guardar → refresca semáforos y `badge-ajuste-global` sin recargar ✅
+  - IDs semánticos: `semaforo-{id}`, `gap-{id}`, `badge-ajuste-global` ✅
+  - Notificaciones Bootstrap en `#notificaciones` (no `alert()` nativo) ✅
 
 - [ ] **Actividad 4.2:** Ficha Individual de Competencias (`public/views/ficha.php`):
   - Renderizado de histórico de evaluaciones por periodo
@@ -175,6 +175,6 @@ Bloque 1 → Bloque 2 → Bloque 3 → Bloque 4 → Bloque 5
 | 1 — Config y Entorno | 3 | 3 | 100% ✅ |
 | 2 — Base de Datos | 3 | 3 | 100% ✅ |
 | 3 — Backend PHP | 6 | 6 | 100% ✅ |
-| 4 — Frontend | 5 | 0 | 0% |
+| 4 — Frontend | 5 | 1 | 20% 🟨 |
 | 5 — Entregables | 2 | 0 | 0% |
-| **Total** | **19** | **12** | **63%** |
+| **Total** | **19** | **13** | **68%** |

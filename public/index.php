@@ -178,6 +178,7 @@ $router->get('/matriz', function () {
 // --- Rutas de API / AJAX (Controllers del módulo) ---
 
 // 1. Endpoints de Evaluación One-to-One
+$router->get('/api/evaluacion', [\App\Controllers\EvaluacionController::class, 'obtenerFormulario']);
 $router->get('/api/evaluacion/formulario', [\App\Controllers\EvaluacionController::class, 'obtenerFormulario']);
 $router->post('/api/evaluacion', [\App\Controllers\EvaluacionController::class, 'store']);
 
