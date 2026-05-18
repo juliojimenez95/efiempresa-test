@@ -123,20 +123,20 @@
   - Filtros: por periodo y por departamento/área ✅
   - Alertas visuales para empleados con % ajuste crítico (< umbral configurable) ✅
 
-- [ ] **Actividad 4.4:** Catálogo / Mantenimiento (`public/views/catalogo.php`):
+- [x] **Actividad 4.4:** Catálogo / Mantenimiento (`public/views/catalogo.php`):
   > ⚠️ **Actividad detectada como faltante en el briefing original.** El briefing exige mantenimiento de competencias, familias/bloques, escalas de valoración y periodos.
-  - CRUD de competencias (nombre, bloque, peso, activación)
-  - CRUD de bloques/familias de competencias
-  - CRUD de escalas de valoración (min, max, descripción)
-  - CRUD de periodos (nombre, fechas, escala asignada, cierre)
-  - Actualización de UI sin recarga (Fetch API para operaciones CRUD)
+  - CRUD de competencias (nombre, bloque, peso, activación) ✅
+  - CRUD de bloques/familias de competencias ✅
+  - CRUD de escalas de valoración (min, max, descripción) ✅
+  - CRUD de periodos (nombre, fechas, escala asignada, cierre) ✅
+  - Actualización de UI sin recarga (Fetch API para operaciones CRUD) ✅
 
-- [ ] **Actividad 4.5:** CSS personalizado y sistema visual:
-  - `public/css/semaforos.css` — clases `.semaforo--verde/amarillo/rojo`, `.badge-ajuste--alto/medio/bajo`
-  - `public/css/evaluacion.css` — estilos pantalla One-to-One
-  - `public/css/matriz.css` — estilos tabla resumen
-  - `public/css/main.css` — variables CSS globales, tipografía, layout base
-  - `public/js/evaluacion.js`, `semaforo.js`, `filtros.js`, `utils.js`
+- [x] **Actividad 4.5:** CSS personalizado y sistema visual:
+  - `public/css/semaforos.css` — clases `.semaforo--verde/amarillo/rojo`, `.badge-ajuste--alto/medio/bajo` ✅
+  - `public/css/evaluacion.css` — estilos pantalla One-to-One ✅
+  - `public/css/matriz.css` — estilos tabla resumen ✅
+  - `public/css/main.css` — variables CSS globales, tipografía, layout base ✅
+  - `public/js/evaluacion.js`, `semaforo.js`, `filtros.js`, `utils.js` ✅
 
 ---
 
@@ -175,6 +175,6 @@ Bloque 1 → Bloque 2 → Bloque 3 → Bloque 4 → Bloque 5
 | 1 — Config y Entorno | 3 | 3 | 100% ✅ |
 | 2 — Base de Datos | 3 | 3 | 100% ✅ |
 | 3 — Backend PHP | 6 | 6 | 100% ✅ |
-| 4 — Frontend | 5 | 3 | 60% 🟨 |
+| 4 — Frontend | 5 | 5 | 100% ✅ |
 | 5 — Entregables | 2 | 0 | 0% |
-| **Total** | **19** | **15** | **78%** |
+| **Total** | **19** | **17** | **89%** |
