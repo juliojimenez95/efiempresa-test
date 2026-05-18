@@ -9,9 +9,23 @@ SET sql_mode = 'NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES';
 
 USE vasalto_competencias;
 
+-- Limpieza preventiva de tablas existentes para garantizar idempotencia en instalaciones Docker
+DROP TABLE IF EXISTS evaluaciones_detalle;
+DROP TABLE IF EXISTS evaluaciones_cabecera;
+DROP TABLE IF EXISTS perfiles_objetivo;
+DROP TABLE IF EXISTS competencias;
+DROP TABLE IF EXISTS competencias_bloques;
+DROP TABLE IF EXISTS periodos;
+DROP TABLE IF EXISTS escalas_valoracion;
+DROP TABLE IF EXISTS empleados;
+DROP TABLE IF EXISTS puestos;
+DROP TABLE IF EXISTS areas;
+
 -- =============================================================================
 -- BLOQUE 1: MAESTROS ERP SIMULADOS (areas, puestos, empleados)
 -- =============================================================================
+
+
 
 CREATE TABLE IF NOT EXISTS areas (
     id          INT UNSIGNED NOT NULL AUTO_INCREMENT,

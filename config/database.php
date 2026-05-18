@@ -8,11 +8,12 @@ declare(strict_types=1);
  */
 return [
     'db' => [
-        'host'     => '127.0.0.1', // Usamos 127.0.0.1 por estabilidad en Windows/Docker
-        'port'     => 3306,
-        'dbname'   => 'vasalto_competencias',
-        'username' => 'root',
-        'password' => 'root_secure_pass',
+        'host'     => getenv('DB_HOST') ?: '127.0.0.1',
+        'port'     => (int) (getenv('DB_PORT') ?: 3306),
+        'dbname'   => getenv('DB_NAME') ?: 'vasalto_competencias',
+        'username' => getenv('DB_USER') ?: 'root',
+        'password' => getenv('DB_PASS') !== false ? getenv('DB_PASS') : 'root_secure_pass',
         'charset'  => 'utf8mb4'
     ]
 ];
+

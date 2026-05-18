@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  mysql:
+  db:
     image: mysql:8.0
     container_name: vasalto_competencias_db
     restart: unless-stopped
@@ -13,10 +13,6 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      # Scripts SQL ejecutados en orden alfabético al inicializar el contenedor
-      - ./database/schema.sql:/docker-entrypoint-initdb.d/01_schema.sql
-      - ./database/seed.sql:/docker-entrypoint-initdb.d/02_seed.sql
-      # Volumen persistente para los datos de MySQL
       - mysql_data:/var/lib/mysql
     command: >
       --default-authentication-plugin=mysql_native_password
@@ -28,6 +24,29 @@ services:
       timeout: 5s
       retries: 5
       start_period: 30s
+    networks:
+      - efi_network
+
+  app:
+    build: .
+    container_name: vasalto_competencias_app
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - DB_HOST=db
+      - DB_PORT=3306
+      - DB_NAME=vasalto_competencias
+      - DB_USER=root
+      - DB_PASS=root_secure_pass
+    depends_on:
+      - db
+    networks:
+      - efi_network
+
+networks:
+  efi_network:
+    driver: bridge
 
 volumes:
   mysql_data:
