@@ -77,6 +77,7 @@ $container->singleton(\App\Services\EvaluacionService::class, function ($c) {
         $c->get(\App\Repositories\Contracts\PerfilObjetivoRepositoryInterface::class),
         $c->get(\App\Repositories\Contracts\PeriodoRepositoryInterface::class),
         $c->get(\App\Repositories\Contracts\EmpleadoRepositoryInterface::class),
+        $c->get(\App\Repositories\Contracts\CompetenciaRepositoryInterface::class),
         $c->get(\App\Services\CompetenciaCalculadoraServicio::class)
     );
 });
