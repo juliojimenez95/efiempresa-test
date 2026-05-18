@@ -147,10 +147,32 @@ Al renderizar las columnas de competencias por cada empleado, la celda recupera 
 
 ## 🐳 6. Infraestructura, SRE y Dockerización
 
-### 6.1 Inyección de Dependencias Recursiva (`Container.php`)
-El core de la aplicación no depende de fábricas estáticas rígidas. El contenedor [`src/Core/Container.php`](../src/Core/Container.php) inspecciona recursivamente los parámetros del constructor de cualquier clase solicitada usando `ReflectionClass` e instancia e inyecta de forma automática los singletons de base de datos y repositorios requeridos en tiempo de ejecución.
+### 6.1 Inyección de Dependencias Híbrida (`Container.php`)
+El core de la aplicación implementa un contenedor de servicios ligero que no depende de fábricas estáticas rígidas. El contenedor [`src/Core/Container.php`](../src/Core/Container.php) inspecciona recursivamente los parámetros del constructor de cualquier clase solicitada usando `ReflectionClass` e instancia e inyecta de forma automática los singletons requeridos en tiempo de ejecución.
 
-### 6.2 Composición de Orquestación docker-compose
+*   **Patrón Singleton Híbrido:** Para admitir de forma armoniosa tanto la inyección automática por constructores en los controladores como la resolución estática en vistas PHP heredadas (`catalogo.php`, `evaluacion.php`, etc.), el contenedor almacena una instancia estática única (`self::$instance`). Se inicializa en el constructor del contenedor en `index.php` y se expone a través de `Container::getInstance()`. Esto garantiza que tanto el rutero dinámico como las plantillas embebidas operen exactamente sobre la misma instancia del contenedor de dependencias sin perder las configuraciones e inyecciones iniciales.
+
+### 6.2 Integridad en la Inyección de Servicios (`public/index.php`)
+Para evitar fallos de emparejamiento de tipo en el despachador de rutas, la inicialización manual del orquestador transaccional `EvaluacionService` se define de forma estricta respetando su firma de constructor de 6 argumentos:
+```php
+$container->singleton(\App\Services\EvaluacionService::class, function ($c) {
+    return new \App\Services\EvaluacionService(
+        $c->get(\App\Repositories\Contracts\EvaluacionRepositoryInterface::class),
+        $c->get(\App\Repositories\Contracts\PerfilObjetivoRepositoryInterface::class),
+        $c->get(\App\Repositories\Contracts\PeriodoRepositoryInterface::class),
+        $c->get(\App\Repositories\Contracts\EmpleadoRepositoryInterface::class),
+        $c->get(\App\Repositories\Contracts\CompetenciaRepositoryInterface::class), // Inyección explícita del 5º parámetro
+        $c->get(\App\Services\CompetenciaCalculadoraServicio::class)
+    );
+});
+```
+Esto resuelve la inconsistencia donde la omisión del repositorio de competencias causaba que la calculadora de GAP fuera erróneamente interpretada como repositorio, previniendo errores de tipo 500 en las peticiones de matrices y evaluaciones.
+
+### 6.3 Consistencia de Proyección de Datos y Claves del Esquema
+Para evitar alertas o warnings de PHP de tipo `Undefined array key`, las vistas del frontend consumen los datos respetando de forma unificada los nombres de proyección física de base de datos.
+*   **Corrección de Escalas en Catálogo:** La vista [`public/views/catalogo.php`](../public/views/catalogo.php) consume de forma explícita las claves `valor_min` y `valor_max` mapeadas por el repositorio a partir de la tabla `escalas_valoracion`, en reemplazo de los términos heredados desalineados `valor_minimo` y `valor_maximo`.
+
+### 6.4 Composición de Orquestación docker-compose
 El entorno cuenta con dos servicios enlazados en una red bridge:
 *   `vasalto_competencias_db` (MySQL 8.0 en el puerto 3306).
 *   `vasalto_competencias_app` (PHP 8.2 Alpine en el puerto 8000).

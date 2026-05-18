@@ -140,18 +140,18 @@
 
 ---
 
-## ⬜ Bloque 5: Entregables Finales y Estimación [PENDIENTE]
+## ✅ Bloque 5: Entregables Finales y Estimación [COMPLETADO]
 
-- [ ] **Actividad 5.1:** Redacción del informe técnico de arquitectura y sustentación (4 a 6 páginas):
-  - Justificación de decisiones de arquitectura (Clean Architecture, patrones usados)
-  - Diagrama de capas y flujo de datos
-  - Decisiones de escalabilidad y configurabilidad
-  - Estrategia de trazabilidad e historicidad
+- [x] **Actividad 5.1:** Redacción del informe técnico de arquitectura y sustentación (4 a 6 páginas):
+  - Justificación de decisiones de arquitectura (Clean Architecture, patrones usados) ✅
+  - Diagrama de capas y flujo de datos ✅
+  - Decisiones de escalabilidad y configurabilidad ✅
+  - Estrategia de trazabilidad e historicidad ✅
 
-- [ ] **Actividad 5.2:** Cuadro de estimación formal de horas por bloque para el roadmap presupuestal de la Fase 1:
-  - Tabla de estimación por actividad (horas mínimas / horas máximas)
-  - Total de horas del proyecto
-  - Observaciones de riesgo y dependencias
+- [x] **Actividad 5.2:** Cuadro de estimación formal de horas por bloque para el roadmap presupuestal de la Fase 1:
+  - Tabla de estimación por actividad (horas mínimas / horas máximas) ✅
+  - Total de horas del proyecto ✅
+  - Observaciones de riesgo y dependencias ✅
 
 ---
 
@@ -176,5 +176,5 @@ Bloque 1 → Bloque 2 → Bloque 3 → Bloque 4 → Bloque 5
 | 2 — Base de Datos | 3 | 3 | 100% ✅ |
 | 3 — Backend PHP | 6 | 6 | 100% ✅ |
 | 4 — Frontend | 5 | 5 | 100% ✅ |
-| 5 — Entregables | 2 | 0 | 0% |
-| **Total** | **19** | **17** | **89%** |
+| 5 — Entregables | 2 | 2 | 100% ✅ |
+| **Total** | **19** | **19** | **100%** |
