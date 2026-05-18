@@ -1,8 +1,34 @@
-# Entorno / Configuraciones locales
-.env
-config.local.php
+# =============================================================================
+# .gitignore — Gestor de Competencias ERP
+# =============================================================================
 
-# IDEs y Editores de codigo
+# -----------------------------------------------------------------------------
+# ENTORNO Y CONFIGURACIÓN LOCAL
+# -----------------------------------------------------------------------------
+.env
+.env.local
+.env.*.local
+config.local.php
+config/database.local.php
+
+# -----------------------------------------------------------------------------
+# PHP — DEPENDENCIAS Y CACHÉ
+# -----------------------------------------------------------------------------
+vendor/
+composer.lock
+*.phar
+
+# -----------------------------------------------------------------------------
+# DOCKER — VOLÚMENES Y DATOS PERSISTIDOS LOCALMENTE
+# El volume "mysql_data" es un named volume gestionado por Docker (no bind-mount)
+# pero se excluye por precaución si alguien lo cambia a bind-mount local.
+# -----------------------------------------------------------------------------
+mysql_data/
+.docker/
+
+# -----------------------------------------------------------------------------
+# IDEs Y EDITORES
+# -----------------------------------------------------------------------------
 .idea/
 .vscode/
 *.suo
@@ -10,8 +36,28 @@ config.local.php
 *.njsproj
 *.sln
 *.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
 
-# Logs y Temporales
+# -----------------------------------------------------------------------------
+# LOGS Y TEMPORALES
+# -----------------------------------------------------------------------------
 logs/
 *.log
 tmp/
+cache/
+/storage/
+
+# -----------------------------------------------------------------------------
+# ARCHIVOS DEL SISTEMA OPERATIVO
+# -----------------------------------------------------------------------------
+.DS_Store
+ehthumbs.db
+Desktop.ini
+
+# -----------------------------------------------------------------------------
+# PDF DEL BRIEFING — DOCUMENTO INTERNO, NO VA AL REPO PÚBLICO
+# -----------------------------------------------------------------------------
+*.pdf
