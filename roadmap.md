@@ -117,11 +117,11 @@
   - Columnas: Competencia · Peso · Valor Ideal · Valor Real · GAP · Semáforo · % Ajuste ✅
   - Filtro por periodo (dropdown dinámico) ✅
 
-- [ ] **Actividad 4.3:** Matriz Resumen por Equipo (`public/views/matriz.php`):
-  - Tabla cruzada: filas = empleados, columnas = competencias
-  - Semáforos visuales por celda
-  - Filtros: por periodo y por departamento/área
-  - Alertas visuales para empleados con % ajuste crítico (< umbral configurable)
+- [x] **Actividad 4.3:** Matriz Resumen por Equipo (`public/views/matriz.php`):
+  - Tabla cruzada: filas = empleados, columnas = competencias ✅
+  - Semáforos visuales por celda ✅
+  - Filtros: por periodo y por departamento/área ✅
+  - Alertas visuales para empleados con % ajuste crítico (< umbral configurable) ✅
 
 - [ ] **Actividad 4.4:** Catálogo / Mantenimiento (`public/views/catalogo.php`):
   > ⚠️ **Actividad detectada como faltante en el briefing original.** El briefing exige mantenimiento de competencias, familias/bloques, escalas de valoración y periodos.
@@ -175,6 +175,6 @@ Bloque 1 → Bloque 2 → Bloque 3 → Bloque 4 → Bloque 5
 | 1 — Config y Entorno | 3 | 3 | 100% ✅ |
 | 2 — Base de Datos | 3 | 3 | 100% ✅ |
 | 3 — Backend PHP | 6 | 6 | 100% ✅ |
-| 4 — Frontend | 5 | 2 | 40% 🟨 |
+| 4 — Frontend | 5 | 3 | 60% 🟨 |
 | 5 — Entregables | 2 | 0 | 0% |
-| **Total** | **19** | **14** | **73%** |
+| **Total** | **19** | **15** | **78%** |

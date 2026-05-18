@@ -64,9 +64,11 @@ class MatrizController
 
             http_response_code(200);
             echo json_encode([
-                'status'  => 'success',
-                'periodo' => $resultado['periodo'],
-                'matriz'  => $resultado['matriz']
+                'status'       => 'success',
+                'periodo'      => $resultado['periodo'],
+                'matriz'       => $resultado['matriz'],
+                'detalles'     => $resultado['detalles'],
+                'competencias' => $resultado['competencias']
             ], JSON_UNESCAPED_UNICODE);
 
         } catch (Throwable $e) {

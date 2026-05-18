@@ -1,0 +1,89 @@
+/*
+ * Gestor de Competencias ERP - Estilos Premium para la Matriz Resumen de Equipo
+ * Autor: Julián Ramírez (Software Architect)
+ */
+
+/* Matriz Table Styles */
+.matriz-table-container {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    border: 1px solid #e2e8f0;
+    overflow: hidden;
+}
+
+.table-matriz {
+    margin-bottom: 0;
+}
+
+.table-matriz th {
+    font-size: 0.825rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    padding: 14px 12px;
+    vertical-align: middle;
+    border-bottom: 2px solid #cbd5e1;
+}
+
+/* Cabeceras de Competencia Rotadas u Optimizadas */
+.col-competencia-header {
+    min-width: 130px;
+    text-align: center;
+    border-left: 1px solid #f1f5f9;
+}
+
+.col-competencia-header .block-badge {
+    display: block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: #4f46e5; /* Indigo */
+    margin-bottom: 4px;
+    text-transform: uppercase;
+}
+
+/* Celdas de Calificación de Competencias */
+.cell-calificacion {
+    text-align: center;
+    padding: 12px !important;
+    border-left: 1px solid #f1f5f9;
+    font-weight: 600;
+}
+
+/* Badge circular compacto para la matriz */
+.matriz-badge-score {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+    transition: transform 0.2s ease;
+}
+
+.matriz-badge-score:hover {
+    transform: scale(1.15);
+}
+
+.matriz-score--pendiente {
+    background-color: #f1f5f9; /* Slate 100 */
+    color: #94a3b8;           /* Slate 400 */
+    font-weight: 500;
+    border: 1px dashed #cbd5e1;
+}
+
+/* Dashboard de Resumen superior en Matriz */
+.card-resumen-matriz {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    background-color: #ffffff;
+    transition: all 0.25s ease-in-out;
+}
+
+.card-resumen-matriz:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+}

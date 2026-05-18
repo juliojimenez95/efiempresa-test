@@ -8,6 +8,7 @@ use App\Repositories\Contracts\EvaluacionRepositoryInterface;
 use App\Repositories\Contracts\PerfilObjetivoRepositoryInterface;
 use App\Repositories\Contracts\PeriodoRepositoryInterface;
 use App\Repositories\Contracts\EmpleadoRepositoryInterface;
+use App\Repositories\Contracts\CompetenciaRepositoryInterface;
 use RuntimeException;
 
 /**
@@ -20,6 +21,7 @@ class EvaluacionService
     private PerfilObjetivoRepositoryInterface $perfilObjetivoRepo;
     private PeriodoRepositoryInterface $periodoRepo;
     private EmpleadoRepositoryInterface $empleadoRepo;
+    private CompetenciaRepositoryInterface $competenciaRepo;
     private CompetenciaCalculadoraServicio $calculadora;
 
     /**
@@ -30,12 +32,14 @@ class EvaluacionService
         PerfilObjetivoRepositoryInterface $perfilObjetivoRepo,
         PeriodoRepositoryInterface $periodoRepo,
         EmpleadoRepositoryInterface $empleadoRepo,
+        CompetenciaRepositoryInterface $competenciaRepo,
         CompetenciaCalculadoraServicio $calculadora
     ) {
         $this->evaluacionRepo = $evaluacionRepo;
         $this->perfilObjetivoRepo = $perfilObjetivoRepo;
         $this->periodoRepo = $periodoRepo;
         $this->empleadoRepo = $empleadoRepo;
+        $this->competenciaRepo = $competenciaRepo;
         $this->calculadora = $calculadora;
     }
 
@@ -157,10 +161,14 @@ class EvaluacionService
         }
 
         $matriz = $this->evaluacionRepo->findMatrizResumen($periodoId, $areaId);
+        $detalles = $this->evaluacionRepo->findMatrizDetalles($periodoId, $areaId);
+        $competencias = $this->competenciaRepo->findAll();
 
         return [
-            'periodo' => $periodo,
-            'matriz'  => $matriz
+            'periodo'      => $periodo,
+            'matriz'       => $matriz,
+            'detalles'     => $detalles,
+            'competencias' => $competencias
         ];
     }
 
