@@ -229,11 +229,11 @@ try {
                                             <div class="row text-center">
                                                 <div class="col-6 border-end">
                                                     <span class="text-muted small d-block mb-1">Mínimo Permitido</span>
-                                                    <span class="h4 fw-bold text-dark font-monospace"><?= (float) $esc['valor_minimo'] ?></span>
+                                                    <span class="h4 fw-bold text-dark font-monospace"><?= (float) $esc['valor_min'] ?></span>
                                                 </div>
                                                 <div class="col-6">
                                                     <span class="text-muted small d-block mb-1">Máximo Permitido</span>
-                                                    <span class="h4 fw-bold text-dark font-monospace"><?= (float) $esc['valor_maximo'] ?></span>
+                                                    <span class="h4 fw-bold text-dark font-monospace"><?= (float) $esc['valor_max'] ?></span>
                                                 </div>
                                             </div>
                                         </div>
