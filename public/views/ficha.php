@@ -49,6 +49,9 @@ try {
                 <a href="/matriz" class="btn btn-outline-secondary btn-sm">
                     <i class="bi bi-grid-3x3-gap-fill me-1"></i> Matriz Resumen
                 </a>
+                <a href="/catalogo" class="btn btn-outline-secondary btn-sm">
+                    <i class="bi bi-gear-fill me-1"></i> Configuración
+                </a>
             </div>
         </header>
 

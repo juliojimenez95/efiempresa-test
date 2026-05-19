@@ -54,6 +54,9 @@ try {
                 <a href="/ficha" class="btn btn-outline-secondary btn-sm">
                     <i class="bi bi-person-badge-fill me-1"></i> Ficha Individual
                 </a>
+                <a href="/catalogo" class="btn btn-outline-secondary btn-sm">
+                    <i class="bi bi-gear-fill me-1"></i> Configuración
+                </a>
             </div>
         </header>
 

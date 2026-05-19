@@ -41,9 +41,14 @@ try {
                 <span class="text-uppercase tracking-wider text-muted fw-semibold small">Evaluación del Rendimiento</span>
                 <h1 class="h3 fw-bold m-0 text-slate-800">Panel One-to-One</h1>
             </div>
-            <a href="/matriz" class="btn btn-outline-secondary btn-sm">
-                <i class="bi bi-grid-3x3-gap-fill me-1"></i> Matriz Resumen
-            </a>
+            <div class="d-flex gap-2">
+                <a href="/matriz" class="btn btn-outline-secondary btn-sm">
+                    <i class="bi bi-grid-3x3-gap-fill me-1"></i> Matriz Resumen
+                </a>
+                <a href="/catalogo" class="btn btn-outline-secondary btn-sm">
+                    <i class="bi bi-gear-fill me-1"></i> Configuración
+                </a>
+            </div>
         </header>
 
         <div class="row g-4">
