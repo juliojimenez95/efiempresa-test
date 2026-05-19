@@ -14,6 +14,9 @@ WORKDIR /app
 # Copiar todo el código de la aplicación
 COPY . /app
 
+# Sanitizar activamente saltos de línea por si el archivo entra en formato CRLF
+RUN sed -i 's/\r$//' /app/docker/entrypoint.sh
+
 # Otorgar permisos de ejecución al entrypoint
 RUN chmod +x /app/docker/entrypoint.sh
 
