@@ -1,6 +1,6 @@
 # Gestor de Competencias ERP — Documentación Técnica de Arquitectura e Implementación
 > **Cliente:** Vasalto  
-> **Autor:** Julián Ramírez — Senior Software Architect (15+ years experience)  
+> **Autor:** Julio Cesar Jimenez Garcia — Senior Software Architect (4+ years experience)  
 > **Stack Tecnológico:** PHP 8.2+ Nativo (POO) · MySQL 8.0 · Bootstrap 5 · Fetch API · Docker  
 > **Fecha de Entrega:** 2026-05-18  
 
